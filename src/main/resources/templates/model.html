@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>hello</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+<table border="1">
+    <tbody>
+        <tr th:each="t : ${model}">
+            <td th:text="${t.ID}"></td>
+            <td th:text="${t.MEMBER_NAME}"></td>
+            <td th:text="${t.EXEC_TYPE}"></td>
+            <td th:text="${t.USER_NAME}"></td>
+            <td th:text="${t.EXEC_SQL}"></td>
+            <td th:text="${t.MSG}"></td>
+            <td th:text="${t.CREATE_TIME}"></td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>
+

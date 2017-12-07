@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>hello</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+<table border="1">
+    <tbody>
+        <tr th:each="t : ${operation}">
+            <td th:text="${t.OPERATION_ID}"></td>
+            <td th:text="${t.SQL_ID}"></td>
+            <td th:text="${t.UPDATE_USER}"></td>
+            <td th:text="${t.OPERATION_TIME}"></td>
+            <td th:text="${t.MODEL_BEFORE}"></td>
+            <td th:text="${t.MODEL_AFTER}"></td>
+            <td th:text="${t.OPERATION_TYPE}"></td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>
+

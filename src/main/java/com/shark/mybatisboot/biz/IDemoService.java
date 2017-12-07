@@ -12,4 +12,9 @@ public interface IDemoService {
 
     List<Map<String, Object>> querySqlModel();
 
+
+    List<Map> queryOperation();
+
+    List<Map> querySqlModelEntity();
+
 }

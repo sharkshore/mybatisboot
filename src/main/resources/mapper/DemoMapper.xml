@@ -7,4 +7,18 @@
         SELECT DISTINCT member_name from SQL_MODEL
     </select>
 
+
+    <!-- 查询SQL_MODEL -->
+    <select id="querySqlModelEntity" resultType="map">
+    SELECT ID,MEMBER_NAME,EXEC_TYPE,USER_NAME,EXEC_SQL,PARAMETERS,MSG,CREATE_TIME
+    FROM SQL_MODEL
+    </select>
+
+
+    <!-- 查询SQL_MODEL -->
+    <select id="queryOperation" resultType="map">
+        SELECT OPERATION_ID,SQL_ID,UPDATE_USER,OPERATION_TIME,MODEL_BEFORE,MODEL_AFTER,OPERATION_TYPE
+        FROM OPERATION_HISTORY
+    </select>
+
 </mapper>

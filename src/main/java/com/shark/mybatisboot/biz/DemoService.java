@@ -28,4 +28,14 @@ public class DemoService implements IDemoService {
         return demoDao.querySqlModel();
     }
 
+    @Override
+    public List<Map> queryOperation() {
+        return demoMapper.queryOperation();
+    }
+
+    @Override
+    public List<Map> querySqlModelEntity() {
+        return demoMapper.querySqlModelEntity();
+    }
+
 }
