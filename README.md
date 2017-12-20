@@ -20,8 +20,8 @@
 
 ### 分支介绍
 1. master分支,主分支
-2. basic-mybatis分支:mybatis全部环境,提供接口
-3. multi-pom分支:Maven多模块结构
+2. single-module:mybatis全部环境,提供接口
+3. multi-module:Maven多模块结构
 4. mvc-page分支:页面模式,可以构建网站
 
 ### 使用注意事项
