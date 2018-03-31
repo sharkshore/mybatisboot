@@ -31,8 +31,8 @@
 3. 修改父pom.xml中的start.class
 4. 如果整体加载workspace的话,记得修改spring.devtools中的监听文件路径,不然启动项目会报错
 5. 修改mybatis.type-aliases-package路径
-6. 修改@MapperScan("")
-7. 修改日志路径
+6. 修改AppConfig类上的注解@MapperScan("")
+7. 修改日志等级和日志路径
 
 
 ### swagger2查看接口文档地址：
