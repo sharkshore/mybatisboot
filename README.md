@@ -26,7 +26,7 @@
 3. multi-module:Maven多模块结构(该分支已经删除)
 
 ### 使用注意事项
-1. 下载项目后,首先修改文件夹名,再shift+f6修改模块名
+1. 下载项目后,首先修改项目访问根路径,代码包名,再shift+f6修改模块名
 2. 修改基本包名后,记得修改BootApplication和Swagger2Config中的包名地址
 3. 修改父pom.xml中的start.class
 4. 如果整体加载workspace的话,记得修改spring.devtools中的监听文件路径,不然启动项目会报错
