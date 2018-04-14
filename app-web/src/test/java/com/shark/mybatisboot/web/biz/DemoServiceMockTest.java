@@ -81,9 +81,5 @@ public class DemoServiceMockTest {
         log.info("{}", demoService.queryMemberName());
     }
 
-    @Test
-    public void  querySqlModel() throws Exception{
-        log.info("{}", demoService.querySqlModel());
-    }
 
 }

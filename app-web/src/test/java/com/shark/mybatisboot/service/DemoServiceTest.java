@@ -1,5 +1,6 @@
 package com.shark.mybatisboot.service;
 
+import com.shark.mybatisboot.dal.model.Demo;
 import com.shark.mybatisboot.web.BootApplication;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -32,7 +33,7 @@ public class DemoServiceTest {
 
     @Test
     public void querySqlModel() throws Exception {
-        List<Map<String, Object>> maps = demoService.querySqlModel();
+        List<Map<String, Object>> maps = demoService.selectBySelective(new Demo());
         log.info("{}", maps);
     }
 

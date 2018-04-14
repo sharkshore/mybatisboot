@@ -1,6 +1,6 @@
 package com.shark.mybatisboot.web.controller;
 
-import com.shark.mybatisboot.service.SimpleService;
+import com.shark.mybatisboot.service.DemoService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,19 +20,19 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * Created by tuze on 2017/12/7.
  */
 @RunWith(SpringRunner.class)
-@WebMvcTest(SimpleController.class)
+@WebMvcTest(DemoController.class)
 public class SimpleControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @MockBean
-    private SimpleService simpleService;
+    private DemoService simpleService;
 
     @Test
     public void hello() throws Exception {
 
-        given(simpleService.getName()) .willReturn("hello,shark");
+        given(simpleService.toString()) .willReturn("hello,shark");
         mockMvc.perform(get("/simple").accept(MediaType.TEXT_PLAIN))
                 .andDo(print())
                 .andExpect(status().isOk()).andExpect(content().string("hello,shark"));
