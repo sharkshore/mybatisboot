@@ -4,10 +4,10 @@ import com.github.pagehelper.PageHelper;
 import com.shark.mybatisboot.common.enums.ErrorMsgEnum;
 import com.shark.mybatisboot.common.exception.ServiceException;
 import com.shark.mybatisboot.common.model.JsrGroup;
+import com.shark.mybatisboot.common.model.Result;
 import com.shark.mybatisboot.dal.model.Demo;
 import com.shark.mybatisboot.service.DemoService;
 import com.shark.mybatisboot.web.model.PageParams;
-import com.shark.mybatisboot.web.model.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -26,7 +26,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/")
 @Slf4j
-@Api(value = "/", description = "Demo测试", consumes = MediaType.APPLICATION_JSON_VALUE)
+@Api(value = "demo", description = "Demo测试", consumes = MediaType.APPLICATION_JSON_VALUE)
 public class DemoController {
 
     @Autowired
