@@ -33,6 +33,7 @@
 5. 修改mybatis.type-aliases-package路径
 6. 修改AppConfig类上的注解@MapperScan("")
 7. 修改日志等级和日志路径
+8. 修改数据库的连接地址
 
 
 ### swagger2查看接口文档地址：
