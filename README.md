@@ -5,17 +5,18 @@
 2. 配置druid  ok
 3. 配置mysql   ok
 4. 配置mybatis  ok
-5. 配置slf4j  ok
-6. 改造配置文件,支持不同环境  ok
-7. 配置JdbcTemplate   ok
-8. 支持热部署  ok
-9. 支持分页查询(Mybatis分页插件)  ok
-10. 支持单元测试  ok
-11. 支持日志级别,日志输出 ok
-12. druid监控 ok
-13. 支持定时任务  ok
-14. 支持swagger2快速查看接口文档
-15. 支持参数效验(接口传参,资源文件效验)
+5. 配置spring data jpa ok
+6. 配置slf4j  ok
+7. 改造配置文件,支持不同环境  ok
+8. 配置JdbcTemplate   ok
+9. 支持热部署  ok
+10. 支持分页查询(Mybatis分页插件)  ok
+11. 支持单元测试  ok
+12. 支持日志级别,日志输出 ok
+13. druid监控 ok
+14. 支持定时任务  ok
+15. 支持swagger2快速查看接口文档
+16. 支持参数效验(接口传参,资源文件效验)
 
 
 ### 分支介绍
@@ -24,6 +25,11 @@
 4. mvc-page分支:页面模式,可以构建网站
 
 3. multi-module:Maven多模块结构(该分支已经删除)
+
+### 使用前准备
+
+1. 执行doc目录下的user_demo.sql文件创建表和插入数据
+
 
 ### 使用注意事项
 1. 下载项目后,首先修改项目访问根路径,代码包名,再shift+f6修改模块名

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shark.springboot.dal.mapper.UserDemoMapper">
+
+    <resultMap id="BaseResultMap" type="com.shark.springboot.dal.model.dto.UserDemoDO">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="mobile" property="mobile" jdbcType="VARCHAR"/>
+        <result column="age" property="age" jdbcType="INTEGER"/>
+        <result column="delete_flag" property="deleteFlag" jdbcType="INTEGER"/>
+        <result column="created_at" property="createdAt" jdbcType="TIMESTAMP"/>
+        <result column="created_by" property="createdBy" jdbcType="VARCHAR"/>
+        <result column="updated_at" property="createdAt" jdbcType="TIMESTAMP"/>
+        <result column="updated_by" property="createdBy" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="columns">
+        id,name,mobile,age,delete_flag,created_at,created_by,updated_at,updated_by
+    </sql>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.shark.springboot.dal.model.dto.UserDemoDO">
+        INSERT  INTO user_demo
+        (name,mobile,age,created_at,created_by)
+        VALUES (
+            #{name,jdbcType=VARCHAR},
+            #{mobile,jdbcType=VARCHAR},
+            #{age,jdbcType=INTEGER},
+            CURRENT_TIMESTAMP,
+            #{createdBy,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <update id="update" parameterType="com.shark.springboot.dal.model.dto.UserDemoDO">
+        UPDATE user_demo
+        <set>
+            <if test="name !=null">
+                name =#{name,jdbcType=VARCHAR},
+            </if>
+            <if test="mobile !=null">
+                mobile =#{mobile,jdbcType=VARCHAR},
+            </if>
+            <if test="age !=null">
+                age =#{age,jdbcType=INTEGER},
+            </if>
+            <if test="deleteFlag !=null">
+                delete_flag =#{deleteFlag,jdbcType=INTEGER},
+            </if>
+
+            <if test="updatedBy !=null">
+                updated_by =#{updatedBy,jdbcType=VARCHAR},
+            </if>
+            updated_at=CURRENT_TIMESTAMP
+        </set>
+        WHERE id =#{id,jdbcType=INTEGER}
+    </update>
+
+    <delete id="delete" parameterType="int">
+        UPDATE user_demo
+        SET delete_flag =1
+        WHERE id =#{id,jdbcType=INTEGER}
+    </delete>
+
+    <select id="findById" parameterType="int" resultMap="BaseResultMap">
+        SELECT
+        <include refid="columns"/>
+        FROM user_demo
+        WHERE id=#{id,jdbcType=INTEGER}
+    </select>
+
+    <select id="findBySelective" parameterType="com.shark.springboot.dal.model.query.UserDemoQUERY" resultMap="BaseResultMap">
+        SELECT
+        <include refid="columns"/>
+        FROM user_demo
+        <where>
+
+            <if test="deleteFlag ==0 or deleteFlag ==null">
+                AND delete_flag=0
+            </if>
+            <if test="deleteFlag ==1">
+                AND delete_flag=1
+            </if>
+
+            <if test="name !=null">
+                AND name=#{name,jdbcType=VARCHAR}
+            </if>
+            <if test="mobile !=null">
+                AND mobile=#{mobile,jdbcType=VARCHAR}
+            </if>
+            <if test="age !=null">
+                AND age=#{age,jdbcType=INTEGER}
+            </if>
+
+            <if test="beginCreatedAt !=null  and endCreatedAt !=null  ">
+                <![CDATA[
+                    AND created_at>=  #{beginCreatedAt,jdbcType=TIMESTAMP}
+                    AND created_at<= #{endCreatedAt,jdbcType=TIMESTAMP}
+              ]]>
+            </if>
+            <if test="beginUpdatedAt !=null  and endUpdatedAt !=null  ">
+                <![CDATA[
+                    AND updated_at>=  #{beginUpdatedAt,jdbcType=TIMESTAMP}
+                    AND updated_at<= #{endUpdatedAt,jdbcType=TIMESTAMP}
+              ]]>
+            </if>
+        </where>
+
+    </select>
+
+
+</mapper>

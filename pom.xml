@@ -40,7 +40,7 @@
 
 
         <!--项目启动入口-->
-        <start.class>com.shark.mybatisboot.web.BootApplication</start.class>
+        <start.class>com.shark.springboot.web.BootApplication</start.class>
 
 
         <!--maven上传私服包配置-->
@@ -108,6 +108,12 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.zaxxer</groupId>
+                <artifactId>HikariCP</artifactId>
+                <version>${HikariCP.version}</version>
             </dependency>
 
         </dependencies>
