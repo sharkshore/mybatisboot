@@ -6,18 +6,20 @@
 3. 配置mysql   ok
 4. 配置mybatis  ok
 5. 配置spring data jpa ok
-6. 配置slf4j  ok
-7. 改造配置文件,支持不同环境  ok
-8. 配置JdbcTemplate   ok
-9. 支持热部署  ok
-10. 支持分页查询(Mybatis分页插件)  ok
-11. 支持单元测试  ok
-12. 支持日志级别,日志输出 ok
-13. druid监控 ok
-14. 支持定时任务  ok
-15. 支持swagger2快速查看接口文档
-16. 支持参数效验(接口传参,资源文件效验)
+6. 配置redis ok
+7. 配置slf4j  ok
+8. 改造配置文件,支持不同环境  ok
+9. 配置JdbcTemplate   ok
+10. 支持热部署  ok
+11. 支持分页查询(Mybatis分页插件)  ok
+12. 支持单元测试  ok
+13. 支持日志级别,日志输出 ok
+14. druid监控 ok
+15. 支持定时任务  ok
+16. 支持swagger2快速查看接口文档
+17. 支持参数效验(接口传参,资源文件效验)
 
+# springboot版本:1.5.6.RELEASE
 
 ### 分支介绍
 1. master分支,主分支(multi-module:Maven多模块结构)

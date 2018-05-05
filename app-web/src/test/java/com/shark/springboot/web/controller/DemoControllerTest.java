@@ -4,7 +4,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.embedded.LocalServerPort;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
@@ -33,8 +32,6 @@ public class DemoControllerTest {
     @Autowired
     private MockMvc mvc;
 
-    @LocalServerPort
-    private int port;
 
     @Autowired
     private TestRestTemplate restTemplate;
@@ -51,7 +48,7 @@ public class DemoControllerTest {
 
     @Test
     public void helloWithRestTemplate() throws Exception {
-        String forObject = this.restTemplate.getForObject("http://localhost:" + port + "/mybatisboot/hello", String.class);
+        String forObject = this.restTemplate.getForObject("http://localhost:9000/mybatisboot/hello", String.class);
         assertTrue(forObject.contains("hello,world"));
     }
 
