@@ -26,7 +26,7 @@ import java.util.Date;
 @DynamicInsert
 @DynamicUpdate
 //修改之前会查询然后进行比较,确定要不要修改
-@SelectBeforeUpdate
+//@SelectBeforeUpdate
 //实现逻辑删除
 @SQLDelete(sql="update user_demo set delete_flag=1 where id=?")
 //查询的时候只查询delete_flag=0的
@@ -59,12 +59,12 @@ public class UserDemoEntity implements Serializable{
     private Integer deleteFlag;
 
     @ApiModelProperty("创建时间")
-    @Column(name = "created_at")
+    @Column(name = "created_at",updatable = false)
     //设置默认值
     private Date createdAt;
 
     @ApiModelProperty("创建人")
-    @Column
+    @Column(name = "created_by",updatable = false)
     //当属性名与数据库名符合命名规则时,可以不需要指定name
     private String createdBy;
 

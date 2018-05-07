@@ -2,12 +2,18 @@ package com.shark.springboot.dal.dao;
 
 import com.shark.springboot.dal.model.dto.UserDemoDO;
 import com.shark.springboot.dal.model.entity.UserDemoEntity;
+import com.shark.springboot.dal.model.query.UserDemoQUERY;
+import com.shark.springboot.dal.specific.UserDemoSpecification;
 import com.shark.springboot.web.BootApplication;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Date;
@@ -32,14 +38,50 @@ public class UserDemoDaoTest {
 
         UserDemoEntity userDemoEntity = new UserDemoEntity();
         userDemoEntity.setName("王凯文");
-        userDemoEntity.setMobile("17853269431");
+        userDemoEntity.setMobile("15853269431");
         userDemoEntity.setAge(33);
         userDemoEntity.setCreatedBy("李凤");
-        userDemoEntity.setCreatedAt(new Date());
-        userDemoEntity.setDeleteFlag(0);
         userDemoDao.save(userDemoEntity);
+    }
+
+    @Test
+    public void update() throws Exception {
+
+        //必须要整体插入才行, @DynamicUpdate注解对save方法不管用
+        UserDemoEntity userDemoEntity = new UserDemoEntity();
+        userDemoEntity.setId(24L);
+        userDemoEntity.setName("王凯文22");
+        userDemoEntity.setAge(35);
+        userDemoDao.save(userDemoEntity);
+    }
+
+
+    @Test
+    public void findOne() throws Exception {
+        UserDemoEntity entity = userDemoDao.findOne(6L);
+        log.info(entity.toString());
+    }
+
+    @Test
+    public void exist() throws Exception{
+        boolean exists = userDemoDao.exists(8L);
+
+        log.info(String.valueOf(exists));
+    }
+
+    @Test
+    public void count() throws Exception{
+        long count = userDemoDao.count();
+        log.info(String.valueOf(count));
 
     }
+
+
+    @Test
+    public void delete() throws Exception{
+        userDemoDao.delete(15L);
+    }
+
 
     @Test
     public void findAll() throws Exception {
@@ -47,6 +89,27 @@ public class UserDemoDaoTest {
         log.info(all.toString());
     }
 
+    @Test
+    public void findAllBySortAndPage() throws Exception {
+        PageRequest pageRequest = new PageRequest(2,8, Sort.Direction.ASC,"age");
+        Page<UserDemoEntity> all = userDemoDao.findAll(pageRequest);
+        all.getContent().stream()
+           .map(UserDemoEntity::getName)
+           .forEach(System.out::println);
+
+    }
+
+    @Test
+    public void findBySelective() throws Exception {
+        UserDemoQUERY query = new UserDemoQUERY();
+        query.setCreatedBy("李凤");
+        query.setMinAge(30);
+        Specification<UserDemoEntity> spec = UserDemoSpecification.getSpec(query);
+        List<UserDemoEntity> all = userDemoDao.findAll(spec);
+        all.stream()
+           .map(UserDemoEntity::getId)
+           .forEach(System.out::println);
+    }
 
     @Test
     public void findByName() throws Exception {
