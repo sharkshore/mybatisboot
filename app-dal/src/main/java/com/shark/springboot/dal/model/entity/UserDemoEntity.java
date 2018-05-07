@@ -5,6 +5,9 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.SelectBeforeUpdate;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -20,6 +23,9 @@ import java.util.Date;
 @ApiModel(value = "UserDemoDO")
 @Entity
 @Table(name = "user_demo")
+@DynamicInsert
+@DynamicUpdate
+@SelectBeforeUpdate
 public class UserDemoEntity implements Serializable{
 
     private static final long serialVersionUID = -7060297326710553960L;
@@ -30,7 +36,8 @@ public class UserDemoEntity implements Serializable{
     private Long id;
 
     @ApiModelProperty("姓名")
-    @Column(name = "name")
+    @Column
+    //当属性名与数据库名符合命名规则时,可以不需要指定name
     private String name;
 
     @ApiModelProperty("手机号码")
@@ -42,15 +49,18 @@ public class UserDemoEntity implements Serializable{
     private Integer age;
 
     @ApiModelProperty("删除标识")
-    @Column(name = "delete_flag")
+    @Column(name = "delete_flag",insertable = false)
+    //设置默认值
     private Integer deleteFlag;
 
     @ApiModelProperty("创建时间")
     @Column(name = "created_at")
+    //设置默认值
     private Date createdAt;
 
     @ApiModelProperty("创建人")
-    @Column(name = "created_by")
+    @Column
+    //当属性名与数据库名符合命名规则时,可以不需要指定name
     private String createdBy;
 
     @ApiModelProperty("创建时间")
