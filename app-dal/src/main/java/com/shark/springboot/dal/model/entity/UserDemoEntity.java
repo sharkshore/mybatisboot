@@ -5,11 +5,11 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.DynamicInsert;
-import org.hibernate.annotations.DynamicUpdate;
-import org.hibernate.annotations.SelectBeforeUpdate;
+import org.hibernate.annotations.*;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -25,7 +25,12 @@ import java.util.Date;
 @Table(name = "user_demo")
 @DynamicInsert
 @DynamicUpdate
+//修改之前会查询然后进行比较,确定要不要修改
 @SelectBeforeUpdate
+//实现逻辑删除
+@SQLDelete(sql="update user_demo set delete_flag=1 where id=?")
+//查询的时候只查询delete_flag=0的
+@Where(clause = "delete_flag=0")
 public class UserDemoEntity implements Serializable{
 
     private static final long serialVersionUID = -7060297326710553960L;
