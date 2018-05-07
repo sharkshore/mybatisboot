@@ -20,11 +20,14 @@
 17. 支持参数效验(接口传参,资源文件效验)
 
 # springboot版本:1.5.6.RELEASE
+# java版本:java8
 
 ### 分支介绍
 1. master分支,主分支(multi-module:Maven多模块结构)
-2. single-module:mybatis全部环境,提供接口
-4. mvc-page分支:页面模式,可以构建网站
+2. 2.0.1.RELEASE Springboot版本
+3. 1.5.6.RELEASE Springboot版本
+4. single-module:mybatis全部环境,提供接口
+5. mvc-page分支:页面模式,可以构建网站
 
 3. multi-module:Maven多模块结构(该分支已经删除)
 
