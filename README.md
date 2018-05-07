@@ -48,6 +48,9 @@
 8. 修改数据库的连接地址
 
 
+### Spring data jpa rest
+http://localhost:9000/spring-boot/profile
+
 ### swagger2查看接口文档地址：
 
 1. 接口详细数据
