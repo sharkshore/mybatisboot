@@ -122,9 +122,11 @@ public class UserDemoDaoTest {
         query.setBeginCreatedAt(bDate);
         query.setEndCreatedAt(eDate);
 
+        PageRequest pageRequest = new PageRequest(2, 3);
+
         Specification<UserDemoEntity> spec = UserDemoSpecification.getSpec(query);
-        List<UserDemoEntity> all = userDemoDao.findAll(spec);
-        all.stream()
+        Page<UserDemoEntity> all = userDemoDao.findAll(spec, pageRequest);
+        all.getContent().stream()
            .map(UserDemoEntity::getId)
            .forEach(System.out::println);
     }
