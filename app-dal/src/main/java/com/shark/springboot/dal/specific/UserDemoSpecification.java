@@ -53,6 +53,12 @@ public class UserDemoSpecification {
                     if(p1!=null) p1 = cb.and(p1, p2);
                     else p1=p2;
                 }
+
+                if (userDemoQUERY.getBeginCreatedAt() != null && userDemoQUERY.getEndCreatedAt() != null) {
+                    Predicate p2 = cb.between(root.get("createdAt"), userDemoQUERY.getBeginCreatedAt(), userDemoQUERY.getEndCreatedAt());
+                    if (p1 != null) p1 = cb.and(p1, p2);
+                    else p1 = p2;
+                }
                 return p1;
 
             }
