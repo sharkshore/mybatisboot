@@ -1,7 +1,6 @@
 package com.shark.springboot.dal.dao;
 
 import com.shark.springboot.common.utils.DateUtil;
-import com.shark.springboot.dal.model.dto.UserDemoDO;
 import com.shark.springboot.dal.model.entity.UserDemoEntity;
 import com.shark.springboot.dal.model.query.UserDemoQUERY;
 import com.shark.springboot.dal.specific.UserDemoSpecification;
@@ -19,7 +18,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Date;
 import java.util.List;
-import java.util.function.DoubleToIntFunction;
 import java.util.function.Function;
 
 
@@ -29,10 +27,10 @@ import java.util.function.Function;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = BootApplication.class)
 @Slf4j
-public class UserDemoDaoTest {
+public class UserDemoJpaDaoTest {
 
     @Autowired
-    private UserDemoDao userDemoDao;
+    private UserDemoJpaDao userDemoJpaDao;
 
     @Test
     public void save() throws Exception {
@@ -42,7 +40,7 @@ public class UserDemoDaoTest {
         userDemoEntity.setMobile("15853269431");
         userDemoEntity.setAge(33);
         userDemoEntity.setCreatedBy("李凤");
-        userDemoDao.save(userDemoEntity);
+        userDemoJpaDao.save(userDemoEntity);
     }
 
     @Test
@@ -53,26 +51,26 @@ public class UserDemoDaoTest {
         userDemoEntity.setId(24L);
         userDemoEntity.setName("王凯文22");
         userDemoEntity.setAge(35);
-        userDemoDao.save(userDemoEntity);
+        userDemoJpaDao.save(userDemoEntity);
     }
 
 
     @Test
     public void findOne() throws Exception {
-        UserDemoEntity entity = userDemoDao.findOne(6L);
+        UserDemoEntity entity = userDemoJpaDao.findOne(6L);
         log.info(entity.toString());
     }
 
     @Test
     public void exist() throws Exception{
-        boolean exists = userDemoDao.exists(8L);
+        boolean exists = userDemoJpaDao.exists(8L);
 
         log.info(String.valueOf(exists));
     }
 
     @Test
     public void count() throws Exception{
-        long count = userDemoDao.count();
+        long count = userDemoJpaDao.count();
         log.info(String.valueOf(count));
 
     }
@@ -80,20 +78,20 @@ public class UserDemoDaoTest {
 
     @Test
     public void delete() throws Exception{
-        userDemoDao.delete(15L);
+        userDemoJpaDao.delete(15L);
     }
 
 
     @Test
     public void findAll() throws Exception {
-        List<UserDemoEntity> all = userDemoDao.findAll();
+        List<UserDemoEntity> all = userDemoJpaDao.findAll();
         log.info(all.toString());
     }
 
     @Test
     public void findAllBySortAndPage() throws Exception {
         PageRequest pageRequest = new PageRequest(2,8, Sort.Direction.ASC,"age");
-        Page<UserDemoEntity> all = userDemoDao.findAll(pageRequest);
+        Page<UserDemoEntity> all = userDemoJpaDao.findAll(pageRequest);
         all.getContent().stream()
            .map(UserDemoEntity::getName)
            .forEach(System.out::println);
@@ -106,7 +104,7 @@ public class UserDemoDaoTest {
         query.setCreatedBy("李凤");
         query.setMinAge(30);
         Specification<UserDemoEntity> spec = UserDemoSpecification.getSpec(query);
-        List<UserDemoEntity> all = userDemoDao.findAll(spec);
+        List<UserDemoEntity> all = userDemoJpaDao.findAll(spec);
         all.stream()
            .map(UserDemoEntity::getId)
            .forEach(System.out::println);
@@ -125,7 +123,7 @@ public class UserDemoDaoTest {
         PageRequest pageRequest = new PageRequest(2, 3);
 
         Specification<UserDemoEntity> spec = UserDemoSpecification.getSpec(query);
-        Page<UserDemoEntity> all = userDemoDao.findAll(spec, pageRequest);
+        Page<UserDemoEntity> all = userDemoJpaDao.findAll(spec, pageRequest);
         all.getContent().stream()
            .map(UserDemoEntity::getId)
            .forEach(System.out::println);
@@ -136,7 +134,7 @@ public class UserDemoDaoTest {
     @Test
     public void findByName() throws Exception {
 
-        UserDemoEntity demoEntity = userDemoDao.findByName("孔景行");
+        UserDemoEntity demoEntity = userDemoJpaDao.findByName("孔景行");
         log.info(demoEntity.toString());
 
     }

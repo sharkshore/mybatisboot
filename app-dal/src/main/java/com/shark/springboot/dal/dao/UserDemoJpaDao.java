@@ -11,7 +11,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
  * Created by tuze on 2018/5/5.
  */
 @RepositoryRestResource(collectionResourceRel = "people",path="people")
-public interface UserDemoDao extends JpaRepository<UserDemoEntity,Long>,JpaSpecificationExecutor<UserDemoEntity> {
+public interface UserDemoJpaDao extends JpaRepository<UserDemoEntity,Long>,JpaSpecificationExecutor<UserDemoEntity> {
 
     UserDemoEntity findByName(@Param("name") String name);
 }
