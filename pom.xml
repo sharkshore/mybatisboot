@@ -10,8 +10,8 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>com.shark.mybatisboot</groupId>
-    <artifactId>mybatisboot</artifactId>
+    <groupId>com.shark.boot</groupId>
+    <artifactId>springboot</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <modules>
         <module>app-common</module>
@@ -22,7 +22,7 @@
     </modules>
     <packaging>pom</packaging>
 
-    <name>mybatisboot</name>
+    <name>springboot</name>
     <description>Demo project for Spring Boot</description>
 
 

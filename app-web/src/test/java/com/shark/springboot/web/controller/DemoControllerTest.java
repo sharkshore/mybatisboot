@@ -48,7 +48,7 @@ public class DemoControllerTest {
 
     @Test
     public void helloWithRestTemplate() throws Exception {
-        String forObject = this.restTemplate.getForObject("http://localhost:9000/mybatisboot/hello", String.class);
+        String forObject = this.restTemplate.getForObject("http://localhost:9000/springboot/hello", String.class);
         assertTrue(forObject.contains("hello,world"));
     }
 

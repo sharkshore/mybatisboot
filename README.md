@@ -54,10 +54,10 @@ http://localhost:9000/spring-boot/profile
 ### swagger2查看接口文档地址：
 
 1. 接口详细数据
-http://localhost:9000/mybatisboot/v2/api-docs
+http://localhost:9000/springboot/v2/api-docs
 
 2. 访问界面:
-http://localhost:9000/mybatisboot/swagger-ui.html
+http://localhost:9000/springboot/swagger-ui.html
 
 
 ### 日志输出内容元素具体如下：
@@ -71,7 +71,7 @@ http://localhost:9000/mybatisboot/swagger-ui.html
 * 日志内容
 
 ### druid监控的地址
-> http://127.0.0.1:9000/mybatisboot/druid/index.html
+> http://127.0.0.1:9000/springboot/druid/index.html
 用户名:admin
 密码:123456
 
