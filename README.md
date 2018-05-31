@@ -38,14 +38,15 @@
 
 
 ### 使用注意事项
-1. 下载项目后,首先修改项目访问根路径,代码包名,再shift+f6修改模块名
-2. 修改基本包名后,记得修改BootApplication和Swagger2Config中的包名地址
-3. 修改父pom.xml中的start.class
-4. 如果整体加载workspace的话,记得修改spring.devtools中的监听文件路径,不然启动项目会报错
-5. 修改mybatis.type-aliases-package路径
-6. 修改AppConfig类上的注解@MapperScan("")
-7. 修改日志等级和日志路径
-8. 修改数据库的连接地址
+1. 下载项目后,首先修改IDEA项目显示名,CTRL+ALT+SHIFT+S -->Project Settings-->Project name
+2. 修改项目访问根路径server.context-path,每个模块里的包路径名,再shift+f6修改每个模块名
+3. 修改基本包名后,记得修改BootApplication和Swagger2Config中的包名地址
+4. 修改父pom.xml中的start.class
+5. 如果整体加载workspace的话,记得修改spring.devtools中的监听文件路径,不然启动项目会报错
+6. 修改mybatis.type-aliases-package路径
+7. 修改AppConfig类上的注解@MapperScan("")
+8. 修改日志等级和日志路径
+9. 修改数据库的连接地址
 
 
 ### Spring data jpa rest
