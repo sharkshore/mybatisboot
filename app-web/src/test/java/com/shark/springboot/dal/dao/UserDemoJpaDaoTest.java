@@ -39,7 +39,7 @@ public class UserDemoJpaDaoTest {
 
         UserDemoEntity userDemoEntity = new UserDemoEntity();
         userDemoEntity.setName("王凯文");
-        userDemoEntity.setMobile("15853269431");
+        userDemoEntity.setMobile("15853200431");
         userDemoEntity.setAge(33);
         userDemoEntity.setCreatedBy("李凤");
         userDemoJpaDao.save(userDemoEntity);

@@ -23,15 +23,14 @@ import java.util.Date;
 @ApiModel(value = "UserDemoDO")
 @Entity
 @Table(name = "user_demo")
+@SelectBeforeUpdate
 @DynamicInsert
 @DynamicUpdate
-//修改之前会查询然后进行比较,确定要不要修改
-//@SelectBeforeUpdate
-//实现逻辑删除
-@SQLDelete(sql="update user_demo set delete_flag=1 where id=?")
-//查询的时候只查询delete_flag=0的
+//逻辑删除
+@SQLDelete(sql = "update user_demo set delete_flag=1 where id=?")
+//只查询delete_flag=0的
 @Where(clause = "delete_flag=0")
-public class UserDemoEntity implements Serializable{
+public class UserDemoEntity implements Serializable {
 
     private static final long serialVersionUID = -7060297326710553960L;
 
@@ -41,8 +40,7 @@ public class UserDemoEntity implements Serializable{
     private Long id;
 
     @ApiModelProperty("姓名")
-    @Column
-    //当属性名与数据库名符合命名规则时,可以不需要指定name
+    @Column(name = "name")
     private String name;
 
     @ApiModelProperty("手机号码")
@@ -54,18 +52,15 @@ public class UserDemoEntity implements Serializable{
     private Integer age;
 
     @ApiModelProperty("删除标识")
-    @Column(name = "delete_flag",insertable = false)
-    //设置默认值
+    @Column(name = "delete_flag")
     private Integer deleteFlag;
 
     @ApiModelProperty("创建时间")
-    @Column(name = "created_at",updatable = false)
-    //设置默认值
+    @Column(name = "created_at", updatable = false)
     private Date createdAt;
 
     @ApiModelProperty("创建人")
-    @Column(name = "created_by",updatable = false)
-    //当属性名与数据库名符合命名规则时,可以不需要指定name
+    @Column(name = "created_by", updatable = false)
     private String createdBy;
 
     @ApiModelProperty("创建时间")

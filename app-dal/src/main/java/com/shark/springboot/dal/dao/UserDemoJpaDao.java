@@ -17,6 +17,8 @@ import java.util.List;
  * spring dta jpa示例
  * Created by tuze on 2018/5/5.
  */
+
+//该注解用于直接生成REST接口,如果不需要该接口,可以直接关闭
 @RepositoryRestResource(collectionResourceRel = "people",path="people")
 public interface UserDemoJpaDao extends JpaRepository<UserDemoEntity,Long>,JpaSpecificationExecutor<UserDemoEntity> {
 
